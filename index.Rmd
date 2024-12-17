@@ -2,11 +2,20 @@
 title: "R guide"
 documentclass: book
 output:
-  bookdown::gitbook: default
+  bookdown::gitbook:
+    config:
+      toc:
+        scroll_highlight: yes
+        before: |
+          <li><a href="https://r-guide-in-finnish.netlify.app/"><i class="fa fa-language fa-fw"></i> Finnish version<span></span></a></li>
+        after: |
+          <li><a href="https://bookdown.org/">Proudly published with bookdown</a></li>
 author: Ville Langén
 date: "`r format(Sys.time(), '%d.%m.%Y')`"
 
 ---
+
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -33,7 +42,7 @@ Don't worry if you didn't understand much of the above. You do not need previous
 Disclaimer: I'm a pure clinician myself, and these pages reflect mainly my own experiences in running statistical analyzes. I present the concepts of statistics here only anecdotally. According to your needs, you can learn more about statistics and how to use R for instance by searching internet.
  
 <br>
-This short guide is also available in Finnish: painamalla [tätä linkkiä](https://vldesign.kapsi.fi/r/) pääset tämän oppaan suomenkieliseen versioon.
+This short guide is also available in Finnish: painamalla [tätä linkkiä](https://r-guide-in-finnish.netlify.app/) pääset tämän oppaan suomenkieliseen versioon.
 <br>
 
 
