@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Appendix | R guide</title>
+  <meta name="description" content="Appendix | R guide" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Appendix | R guide" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Appendix | R guide" />
+  
+  
+  
+
+<meta name="author" content="Ville Langén" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="afterword.html"/>
+
+<script src="libs/header-attrs-2.16/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/table1-1.0/table1_defaults.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li> <a href="https://vldesign.kapsi.fi/r/"><i class="fa fa-language fa-fw"></i> Finnish version - suomeksi<span></span></a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface<span></span></a></li>
+<li class="chapter" data-level="2" data-path="r-language.html"><a href="r-language.html"><i class="fa fa-check"></i><b>2</b> R language<span></span></a></li>
+<li class="chapter" data-level="3" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>3</b> R Markdown<span></span></a></li>
+<li class="chapter" data-level="4" data-path="workflow-when-coding-r.html"><a href="workflow-when-coding-r.html"><i class="fa fa-check"></i><b>4</b> Workflow when coding R<span></span></a></li>
+<li class="chapter" data-level="5" data-path="installation-on-a-computer.html"><a href="installation-on-a-computer.html"><i class="fa fa-check"></i><b>5</b> Installation on a computer<span></span></a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="installation-on-a-computer.html"><a href="installation-on-a-computer.html#r-language-installation"><i class="fa fa-check"></i><b>5.1</b> R language installation<span></span></a></li>
+<li class="chapter" data-level="5.2" data-path="installation-on-a-computer.html"><a href="installation-on-a-computer.html#installation-of-rstudio"><i class="fa fa-check"></i><b>5.2</b> Installation of RStudio<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="r-scripts.html"><a href="r-scripts.html"><i class="fa fa-check"></i><b>6</b> R scripts<span></span></a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="r-scripts.html"><a href="r-scripts.html#basic-view-of-rstudio"><i class="fa fa-check"></i><b>6.1</b> Basic view of RStudio<span></span></a></li>
+<li class="chapter" data-level="6.2" data-path="r-scripts.html"><a href="r-scripts.html#creating-an-r-script"><i class="fa fa-check"></i><b>6.2</b> Creating an R script<span></span></a></li>
+<li class="chapter" data-level="6.3" data-path="r-scripts.html"><a href="r-scripts.html#downloading-of-dplyr"><i class="fa fa-check"></i><b>6.3</b> Downloading of dplyr<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="example-dataset.html"><a href="example-dataset.html"><i class="fa fa-check"></i><b>7</b> Example dataset<span></span></a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="example-dataset.html"><a href="example-dataset.html#editing-data-with-dplyr"><i class="fa fa-check"></i><b>7.1</b> Editing data with dplyr<span></span></a></li>
+<li class="chapter" data-level="7.2" data-path="example-dataset.html"><a href="example-dataset.html#recap-of-dplyr"><i class="fa fa-check"></i><b>7.2</b> Recap of dplyr<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="missing-data.html"><a href="missing-data.html"><i class="fa fa-check"></i><b>8</b> Missing data?<span></span></a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="missing-data.html"><a href="missing-data.html#removal-of-missing-data"><i class="fa fa-check"></i><b>8.1</b> Removal of missing data<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="destruction-of-datasets.html"><a href="destruction-of-datasets.html"><i class="fa fa-check"></i><b>9</b> Destruction of datasets<span></span></a></li>
+<li class="chapter" data-level="10" data-path="transformation-variables.html"><a href="transformation-variables.html"><i class="fa fa-check"></i><b>10</b> Transformation variables<span></span></a></li>
+<li class="chapter" data-level="11" data-path="categorical-variables.html"><a href="categorical-variables.html"><i class="fa fa-check"></i><b>11</b> Categorical variables<span></span></a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="categorical-variables.html"><a href="categorical-variables.html#as.factor-command"><i class="fa fa-check"></i><b>11.1</b> as.factor command<span></span></a></li>
+<li class="chapter" data-level="11.2" data-path="categorical-variables.html"><a href="categorical-variables.html#tibble"><i class="fa fa-check"></i><b>11.2</b> tibble<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="code-for-example-data.html"><a href="code-for-example-data.html"><i class="fa fa-check"></i><b>12</b> Code for example data<span></span></a></li>
+<li class="chapter" data-level="13" data-path="creating-r-markdown.html"><a href="creating-r-markdown.html"><i class="fa fa-check"></i><b>13</b> Creating R Markdown<span></span></a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="creating-r-markdown.html"><a href="creating-r-markdown.html#knit-to-final-product"><i class="fa fa-check"></i><b>13.1</b> Knit to final product<span></span></a></li>
+<li class="chapter" data-level="13.2" data-path="creating-r-markdown.html"><a href="creating-r-markdown.html#yaml-header"><i class="fa fa-check"></i><b>13.2</b> YAML header<span></span></a></li>
+<li class="chapter" data-level="13.3" data-path="creating-r-markdown.html"><a href="creating-r-markdown.html#writing-with-r-markdown"><i class="fa fa-check"></i><b>13.3</b> Writing with R Markdown<span></span></a></li>
+<li class="chapter" data-level="13.4" data-path="creating-r-markdown.html"><a href="creating-r-markdown.html#chunks"><i class="fa fa-check"></i><b>13.4</b> “Chunks”<span></span></a></li>
+<li class="chapter" data-level="13.5" data-path="creating-r-markdown.html"><a href="creating-r-markdown.html#first-chunk"><i class="fa fa-check"></i><b>13.5</b> First chunk<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html"><i class="fa fa-check"></i><b>14</b> Analyses with R Markdown<span></span></a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#viewing-the-dataset"><i class="fa fa-check"></i><b>14.1</b> Viewing the dataset<span></span></a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#head-command"><i class="fa fa-check"></i><b>14.1.1</b> head command<span></span></a></li>
+<li class="chapter" data-level="14.1.2" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#kable-beautifies"><i class="fa fa-check"></i><b>14.1.2</b> kable beautifies<span></span></a></li>
+<li class="chapter" data-level="14.1.3" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#tail-command"><i class="fa fa-check"></i><b>14.1.3</b> tail command<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#examining-variables"><i class="fa fa-check"></i><b>14.2</b> Examining variables<span></span></a>
+<ul>
+<li class="chapter" data-level="14.2.1" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#min-max-mean"><i class="fa fa-check"></i><b>14.2.1</b> min, max, mean<span></span></a></li>
+<li class="chapter" data-level="14.2.2" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#summary"><i class="fa fa-check"></i><b>14.2.2</b> summary<span></span></a></li>
+<li class="chapter" data-level="14.2.3" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#summarytools"><i class="fa fa-check"></i><b>14.2.3</b> summarytools<span></span></a></li>
+<li class="chapter" data-level="14.2.4" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#questionrfreq"><i class="fa fa-check"></i><b>14.2.4</b> questionr::freq<span></span></a></li>
+<li class="chapter" data-level="14.2.5" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#table1"><i class="fa fa-check"></i><b>14.2.5</b> table1<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#graphs"><i class="fa fa-check"></i><b>14.3</b> Graphs<span></span></a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#plot"><i class="fa fa-check"></i><b>14.3.1</b> plot<span></span></a></li>
+<li class="chapter" data-level="14.3.2" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#ggplot2"><i class="fa fa-check"></i><b>14.3.2</b> ggplot2<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#linear-regression"><i class="fa fa-check"></i><b>14.4</b> Linear regression<span></span></a>
+<ul>
+<li class="chapter" data-level="14.4.1" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#simple-regression"><i class="fa fa-check"></i><b>14.4.1</b> Simple regression<span></span></a></li>
+<li class="chapter" data-level="14.4.2" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#tidy"><i class="fa fa-check"></i><b>14.4.2</b> tidy<span></span></a></li>
+<li class="chapter" data-level="14.4.3" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#multiple-regression"><i class="fa fa-check"></i><b>14.4.3</b> Multiple regression<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="afterword.html"><a href="afterword.html"><i class="fa fa-check"></i><b>15</b> Afterword<span></span></a></li>
+<li><a href="appendix.html#appendix">Appendix<span></span></a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R guide</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="appendix" class="section level1 unnumbered hasAnchor">
+<h1>Appendix<a href="appendix.html#appendix" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The appendix section has not yet been translated into English. However, you can try and read <a href="https://vldesign.kapsi.fi/r/versionhallinta.html">the appendix of the Finnish version of this guide</a> with an automatic translation to English, as this feature is available in several web browsers nowadays.</p>
+<p><br> <br></p>
+<br>
+<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">
+<a property="dct:title" rel="cc:attributionURL" href="https://vldesign.kapsi.fi/r-guide-in-english/">R guide</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="http://www.linkedin.com/in/ville-langen">Ville Langén</a> is licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution-ShareAlike 4.0 International<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1"></a>
+</p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="afterword.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

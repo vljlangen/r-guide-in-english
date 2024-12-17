@@ -1,0 +1,171 @@
+# Missing data?
+
+In the *Methods* section of scientific articles, it is most often described that all participants with missing data for any of the studied biomarkers were excluded before the analyzes.
+
+Let's practice this next. Let's create a couple of cars ourselves with *dplyr*'s commands in our dataset, but let's do this so that these two cars have missing data. (Note! You don't need to learn how to add a data row or change the row name from the following code at this stage - just copy the codes into your own script *my_data.R*.)
+
+
+```
+# 1.
+#
+# Create a car with no mass defined.
+# Thus, the mass automatically gets the value NA in R (not applicable, i.e. missing data).
+# Store the entire new dataset as the dataset "car_dataset3":
+
+car_dataset3 <- car_dataset2 %>%
+  add_row(fuel_cons = 30.7,
+          horsepower = 67,
+          gear = 1)
+
+#Let's name the last line (i.e. the car) "Lada":
+
+row.names(car_dataset3)[nrow(car_dataset3)] <- "Лада"
+
+
+
+# 2.
+#
+# The next car created will have the name "Trabant" that reflects the history of the GDR (DDR).
+# The mass will be given a clearly incorrect value of 0 kilograms.
+# The entire car dataset replaces the dataset "car_dataset3":
+
+car_dataset3 <- car_dataset3 %>%
+  add_row(fuel_cons = 34.6,
+          horsepower = 23,
+          mass = 0,
+          gear = 1)
+
+row.names(car_dataset3)[nrow(car_dataset3)] <- "Trabant"
+```
+
+<br>
+You can view the generated data again by typing the following command in the console:
+
+
+``` View(car_dataset3) ```
+
+You will see two new lines at the end of the car list with missing/incorrect data in the "mass" column (only the last 6 lines are visible here):
+
+<br>
+
+
+```{r puuttuvadata, echo=FALSE}
+
+kable(tail(car_dataset3))
+```
+
+<br>
+
+## Removal of missing data
+
+Incorrect data can be deleted with the following steps:
+
+1. step: removal of rows containing *NA* (= not applicable) values
+2. step: removal of rows containing inadequate data (e.g. mass cannot be 0 kg)
+
+In practice, when the *filter* command of the *dplyr* package is used, the implementation of the step 2 removes also the lines with *NA* values.
+
+Let's demonstrate this with the following lines of code (you can write these in *my_data.R* script and select them with your mouse and run them by pressing Command+Enter):
+
+
+
+```
+# 1st step:
+#
+# Let's show our data after the rows containing NA have been removed.
+#
+# Note! A new dataset is not created, because we do not command the data
+# to be copied into a new dataset - this would be done with the following
+# operator: <-
+#
+# So the following code just sort of shows what kind of a dataset
+# we would get if we forwarded the code to a new dataset
+# using the <- operator and giving the dataset some
+# name, e.g. "car_dataset4":
+
+car_dataset3 %>% na.omit
+```
+
+<br>
+
+As you can see below (only the last 6 lines are printed), the Lada car that contained the *NA* value would be lost, but the Trabant car would remain:
+
+
+```{r data_ilman_na_ta, echo=FALSE}
+
+# Removal of any rows with NA values:
+
+tail(car_dataset3 %>% na.omit)
+
+```
+
+<br>
+
+Now, let's try the step 2, i.e. remove the variables that don't get some reasonable value, and see how it goes. Note! Again, we don't save this run to any new dataset because we don't use the <- operator at the beginning (or end) of the piped commands. You can write the following lines in *my_data.R* script and run them again with Command+Enter:
+
+
+```
+# 2nd step:
+#
+# Only such cars whose variables get adequate, reasonable values, are retained.
+#
+# Once again, we're not making a new dataset, we're rather just demonstrating what kind of
+# a dataset we would have if we were to create a new dataset:
+
+car_dataset3 %>%
+                    filter(fuel_cons > 0,
+                           horsepower > 0,
+                           mass > 0,
+                           gear %in% c(0,1))
+```
+
+<br>
+
+You'll notice that the command in the step 2 removes directly both the Lada car with *NA* data and the Trabant car with a "zero mass" (only the last 4 lines of the output shown here below):
+
+
+
+```{r data_ilman_epaadekvaattia, echo=FALSE}
+
+# Remove the lines containing NA data:
+
+car_dataset3 %>%
+                    filter(fuel_cons > 0,
+                           horsepower > 0,
+                           mass > 0,
+                           gear %in% c(0,1)) %>% tail(.,n=4)
+
+```
+
+<br>
+
+If and when we use the *filter* command of *dplyr*, our strategy is:
+
+- We use directly the *filter* command of the step 2, and it removes both *NA*s and "zero masses"
+
+At the same time, a new data set containing only adequate data ("car_dataset4") is created. Write the following lines in *my_data.R* script and run them with Command+Enter:
+
+```
+# Delete any rows with either inadequate data or NA.
+# Save a complete dataset by the name "car_dataset4":
+
+car_dataset4 <- car_dataset3 %>%
+  filter(fuel_cons > 0,
+         horsepower > 0,
+         mass > 0,
+         gear %in% c(0,1))
+```
+
+<br>
+
+When you view the dataset by typing the command ```View(car_dataset4)``` into the console, you will notice that the dataset has been cleaned of missing/incorrect data (only the last 4 lines are visible below):
+
+
+```{r missingdatakorjattutail, echo=FALSE}
+
+tail(car_dataset4, n=4) %>% kable()
+
+```
+
+<br>
+<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://vldesign.kapsi.fi/r-guide-in-english/">R guide</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="http://www.linkedin.com/in/ville-langen">Ville Langén</a> is licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution-ShareAlike 4.0 International<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1"></a></p>

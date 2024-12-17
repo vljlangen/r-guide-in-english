@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>14 Analyses with R Markdown | R guide</title>
+  <meta name="description" content="14 Analyses with R Markdown | R guide" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="14 Analyses with R Markdown | R guide" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="14 Analyses with R Markdown | R guide" />
+  
+  
+  
+
+<meta name="author" content="Ville Langén" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="creating-r-markdown.html"/>
+<link rel="next" href="afterword.html"/>
+<script src="libs/header-attrs-2.16/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/table1-1.0/table1_defaults.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li> <a href="https://vldesign.kapsi.fi/r/"><i class="fa fa-language fa-fw"></i> Finnish version - suomeksi<span></span></a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface<span></span></a></li>
+<li class="chapter" data-level="2" data-path="r-language.html"><a href="r-language.html"><i class="fa fa-check"></i><b>2</b> R language<span></span></a></li>
+<li class="chapter" data-level="3" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>3</b> R Markdown<span></span></a></li>
+<li class="chapter" data-level="4" data-path="workflow-when-coding-r.html"><a href="workflow-when-coding-r.html"><i class="fa fa-check"></i><b>4</b> Workflow when coding R<span></span></a></li>
+<li class="chapter" data-level="5" data-path="installation-on-a-computer.html"><a href="installation-on-a-computer.html"><i class="fa fa-check"></i><b>5</b> Installation on a computer<span></span></a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="installation-on-a-computer.html"><a href="installation-on-a-computer.html#r-language-installation"><i class="fa fa-check"></i><b>5.1</b> R language installation<span></span></a></li>
+<li class="chapter" data-level="5.2" data-path="installation-on-a-computer.html"><a href="installation-on-a-computer.html#installation-of-rstudio"><i class="fa fa-check"></i><b>5.2</b> Installation of RStudio<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="r-scripts.html"><a href="r-scripts.html"><i class="fa fa-check"></i><b>6</b> R scripts<span></span></a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="r-scripts.html"><a href="r-scripts.html#basic-view-of-rstudio"><i class="fa fa-check"></i><b>6.1</b> Basic view of RStudio<span></span></a></li>
+<li class="chapter" data-level="6.2" data-path="r-scripts.html"><a href="r-scripts.html#creating-an-r-script"><i class="fa fa-check"></i><b>6.2</b> Creating an R script<span></span></a></li>
+<li class="chapter" data-level="6.3" data-path="r-scripts.html"><a href="r-scripts.html#downloading-of-dplyr"><i class="fa fa-check"></i><b>6.3</b> Downloading of dplyr<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="example-dataset.html"><a href="example-dataset.html"><i class="fa fa-check"></i><b>7</b> Example dataset<span></span></a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="example-dataset.html"><a href="example-dataset.html#editing-data-with-dplyr"><i class="fa fa-check"></i><b>7.1</b> Editing data with dplyr<span></span></a></li>
+<li class="chapter" data-level="7.2" data-path="example-dataset.html"><a href="example-dataset.html#recap-of-dplyr"><i class="fa fa-check"></i><b>7.2</b> Recap of dplyr<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="missing-data.html"><a href="missing-data.html"><i class="fa fa-check"></i><b>8</b> Missing data?<span></span></a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="missing-data.html"><a href="missing-data.html#removal-of-missing-data"><i class="fa fa-check"></i><b>8.1</b> Removal of missing data<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="destruction-of-datasets.html"><a href="destruction-of-datasets.html"><i class="fa fa-check"></i><b>9</b> Destruction of datasets<span></span></a></li>
+<li class="chapter" data-level="10" data-path="transformation-variables.html"><a href="transformation-variables.html"><i class="fa fa-check"></i><b>10</b> Transformation variables<span></span></a></li>
+<li class="chapter" data-level="11" data-path="categorical-variables.html"><a href="categorical-variables.html"><i class="fa fa-check"></i><b>11</b> Categorical variables<span></span></a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="categorical-variables.html"><a href="categorical-variables.html#as.factor-command"><i class="fa fa-check"></i><b>11.1</b> as.factor command<span></span></a></li>
+<li class="chapter" data-level="11.2" data-path="categorical-variables.html"><a href="categorical-variables.html#tibble"><i class="fa fa-check"></i><b>11.2</b> tibble<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="code-for-example-data.html"><a href="code-for-example-data.html"><i class="fa fa-check"></i><b>12</b> Code for example data<span></span></a></li>
+<li class="chapter" data-level="13" data-path="creating-r-markdown.html"><a href="creating-r-markdown.html"><i class="fa fa-check"></i><b>13</b> Creating R Markdown<span></span></a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="creating-r-markdown.html"><a href="creating-r-markdown.html#knit-to-final-product"><i class="fa fa-check"></i><b>13.1</b> Knit to final product<span></span></a></li>
+<li class="chapter" data-level="13.2" data-path="creating-r-markdown.html"><a href="creating-r-markdown.html#yaml-header"><i class="fa fa-check"></i><b>13.2</b> YAML header<span></span></a></li>
+<li class="chapter" data-level="13.3" data-path="creating-r-markdown.html"><a href="creating-r-markdown.html#writing-with-r-markdown"><i class="fa fa-check"></i><b>13.3</b> Writing with R Markdown<span></span></a></li>
+<li class="chapter" data-level="13.4" data-path="creating-r-markdown.html"><a href="creating-r-markdown.html#chunks"><i class="fa fa-check"></i><b>13.4</b> “Chunks”<span></span></a></li>
+<li class="chapter" data-level="13.5" data-path="creating-r-markdown.html"><a href="creating-r-markdown.html#first-chunk"><i class="fa fa-check"></i><b>13.5</b> First chunk<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html"><i class="fa fa-check"></i><b>14</b> Analyses with R Markdown<span></span></a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#viewing-the-dataset"><i class="fa fa-check"></i><b>14.1</b> Viewing the dataset<span></span></a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#head-command"><i class="fa fa-check"></i><b>14.1.1</b> head command<span></span></a></li>
+<li class="chapter" data-level="14.1.2" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#kable-beautifies"><i class="fa fa-check"></i><b>14.1.2</b> kable beautifies<span></span></a></li>
+<li class="chapter" data-level="14.1.3" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#tail-command"><i class="fa fa-check"></i><b>14.1.3</b> tail command<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#examining-variables"><i class="fa fa-check"></i><b>14.2</b> Examining variables<span></span></a>
+<ul>
+<li class="chapter" data-level="14.2.1" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#min-max-mean"><i class="fa fa-check"></i><b>14.2.1</b> min, max, mean<span></span></a></li>
+<li class="chapter" data-level="14.2.2" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#summary"><i class="fa fa-check"></i><b>14.2.2</b> summary<span></span></a></li>
+<li class="chapter" data-level="14.2.3" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#summarytools"><i class="fa fa-check"></i><b>14.2.3</b> summarytools<span></span></a></li>
+<li class="chapter" data-level="14.2.4" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#questionrfreq"><i class="fa fa-check"></i><b>14.2.4</b> questionr::freq<span></span></a></li>
+<li class="chapter" data-level="14.2.5" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#table1"><i class="fa fa-check"></i><b>14.2.5</b> table1<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#graphs"><i class="fa fa-check"></i><b>14.3</b> Graphs<span></span></a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#plot"><i class="fa fa-check"></i><b>14.3.1</b> plot<span></span></a></li>
+<li class="chapter" data-level="14.3.2" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#ggplot2"><i class="fa fa-check"></i><b>14.3.2</b> ggplot2<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#linear-regression"><i class="fa fa-check"></i><b>14.4</b> Linear regression<span></span></a>
+<ul>
+<li class="chapter" data-level="14.4.1" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#simple-regression"><i class="fa fa-check"></i><b>14.4.1</b> Simple regression<span></span></a></li>
+<li class="chapter" data-level="14.4.2" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#tidy"><i class="fa fa-check"></i><b>14.4.2</b> tidy<span></span></a></li>
+<li class="chapter" data-level="14.4.3" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#multiple-regression"><i class="fa fa-check"></i><b>14.4.3</b> Multiple regression<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="afterword.html"><a href="afterword.html"><i class="fa fa-check"></i><b>15</b> Afterword<span></span></a></li>
+<li><a href="appendix.html#appendix">Appendix<span></span></a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R guide</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="analyses-with-r-markdown" class="section level1 hasAnchor" number="14">
+<h1><span class="header-section-number">14</span> Analyses with R Markdown<a href="analyses-with-r-markdown.html#analyses-with-r-markdown" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>You can now start analyzing your data in your “car_dataset6” in R Markdown document. If you want, you can destroy text and chunks from RStudio’s template or write over them. However, be careful not to mess up the YAML header or the first “r setup” chunk.</p>
+<div id="viewing-the-dataset" class="section level2 hasAnchor" number="14.1">
+<h2><span class="header-section-number">14.1</span> Viewing the dataset<a href="analyses-with-r-markdown.html#viewing-the-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="head-command" class="section level3 hasAnchor" number="14.1.1">
+<h3><span class="header-section-number">14.1.1</span> head command<a href="analyses-with-r-markdown.html#head-command" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We make use of the very useful command <em>head</em> which prints the first 6 rows of our data. We get a quick glance at our data and, if we want, we can share it forward in the form of R Markdown.</p>
+<p>You can e.g. write “Here is an excerpt of a few rows of our finalized article data”. After that, you can hit an empty line with enter and write the next chunk, which must have 3 heavy accents at the beginning and at the end:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb25-1"><a href="analyses-with-r-markdown.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r head_of_our_data, echo=FALSE}</span></span>
+<span id="cb25-2"><a href="analyses-with-r-markdown.html#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="analyses-with-r-markdown.html#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="in">head(car_dataset6)</span></span>
+<span id="cb25-4"><a href="analyses-with-r-markdown.html#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<p><br>
+Here is an excerpt of a few rows from our finished data in this article.</p>
+<pre><code>## # A tibble: 6 x 5
+##   `Car Brands`      fuel_cons_eu horsepower_eu mass_eu gear 
+##   &lt;chr&gt;                    &lt;dbl&gt;         &lt;dbl&gt;   &lt;dbl&gt; &lt;fct&gt;
+## 1 Mazda RX4                11.2          112.    1188. 1    
+## 2 Mazda RX4 Wag            11.2          112.    1304. 1    
+## 3 Hornet Sportabout        12.6          177.    1560. 0    
+## 4 Duster 360               16.4          248.    1619. 0    
+## 5 Merc 240D                 9.64          62.9   1447. 0    
+## 6 Merc 230                 10.3           96.3   1429. 0</code></pre>
+<p><br></p>
+<p>While <em>tibble</em> is neat in many ways, I personally don’t like the way the decimal places in <em>tibble</em>-type datasets are printed. To remedy this and to beautify the output, the command <em>kable</em> comes to our help.</p>
+</div>
+<div id="kable-beautifies" class="section level3 hasAnchor" number="14.1.2">
+<h3><span class="header-section-number">14.1.2</span> kable beautifies<a href="analyses-with-r-markdown.html#kable-beautifies" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To make the output nicer to look at, add the command <em>kable</em>, which comes with the package <em>knitr</em>. You can install that package by issuing the following command in the console:</p>
+<pre><code>install.packages(&quot;knitr&quot;)</code></pre>
+<p><br></p>
+<p>In addition to this, you should invoke <em>knitr</em> by adding it to the first chunk named <em>r setup</em>. After that, your first chunk will look like this:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb28-1"><a href="analyses-with-r-markdown.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, include=FALSE}</span></span>
+<span id="cb28-2"><a href="analyses-with-r-markdown.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::opts_chunk$set(echo = TRUE)</span></span>
+<span id="cb28-3"><a href="analyses-with-r-markdown.html#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="in">library(dplyr)</span></span>
+<span id="cb28-4"><a href="analyses-with-r-markdown.html#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="in">library(knitr)</span></span>
+<span id="cb28-5"><a href="analyses-with-r-markdown.html#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="in">source(&quot;my_data.R&quot;)</span></span>
+<span id="cb28-6"><a href="analyses-with-r-markdown.html#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<p><br></p>
+<p>After this you can use the <em>kable</em> command.</p>
+<p>Let’s pipe all the commands as follows:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb29-1"><a href="analyses-with-r-markdown.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r head_of_our_data_plus_kable, echo=FALSE}</span></span>
+<span id="cb29-2"><a href="analyses-with-r-markdown.html#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="analyses-with-r-markdown.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="in">car_dataset6 %&gt;% head %&gt;% kable</span></span>
+<span id="cb29-4"><a href="analyses-with-r-markdown.html#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<p><br></p>
+<p>You will now see a prettier output:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Car Brands</th>
+<th align="right">fuel_cons_eu</th>
+<th align="right">horsepower_eu</th>
+<th align="right">mass_eu</th>
+<th align="left">gear</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Mazda RX4</td>
+<td align="right">11.200000</td>
+<td align="right">111.52793</td>
+<td align="right">1188.432</td>
+<td align="left">1</td>
+</tr>
+<tr class="even">
+<td align="left">Mazda RX4 Wag</td>
+<td align="right">11.200000</td>
+<td align="right">111.52793</td>
+<td align="right">1304.100</td>
+<td align="left">1</td>
+</tr>
+<tr class="odd">
+<td align="left">Hornet Sportabout</td>
+<td align="right">12.577540</td>
+<td align="right">177.43080</td>
+<td align="right">1560.384</td>
+<td align="left">0</td>
+</tr>
+<tr class="even">
+<td align="left">Duster 360</td>
+<td align="right">16.447552</td>
+<td align="right">248.40312</td>
+<td align="right">1619.352</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Merc 240D</td>
+<td align="right">9.639344</td>
+<td align="right">62.86120</td>
+<td align="right">1446.984</td>
+<td align="left">0</td>
+</tr>
+<tr class="even">
+<td align="left">Merc 230</td>
+<td align="right">10.315789</td>
+<td align="right">96.31958</td>
+<td align="right">1428.840</td>
+<td align="left">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tail-command" class="section level3 hasAnchor" number="14.1.3">
+<h3><span class="header-section-number">14.1.3</span> tail command<a href="analyses-with-r-markdown.html#tail-command" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The command <em>tail</em> does the same as <em>head</em> but from the other direction, i.e. it shows the last 6 lines of the dataset.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb30-1"><a href="analyses-with-r-markdown.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r tail_of_our_data_plus_kable, echo=FALSE}</span></span>
+<span id="cb30-2"><a href="analyses-with-r-markdown.html#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="analyses-with-r-markdown.html#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="in">car_dataset6 %&gt;% tail %&gt;% kable</span></span>
+<span id="cb30-4"><a href="analyses-with-r-markdown.html#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Car Brands</th>
+<th align="right">fuel_cons_eu</th>
+<th align="right">horsepower_eu</th>
+<th align="right">mass_eu</th>
+<th align="left">gear</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Porsche 914-2</td>
+<td align="right">9.046154</td>
+<td align="right">92.26402</td>
+<td align="right">970.7040</td>
+<td align="left">1</td>
+</tr>
+<tr class="even">
+<td align="left">Lotus Europa</td>
+<td align="right">7.736842</td>
+<td align="right">114.56960</td>
+<td align="right">686.2968</td>
+<td align="left">1</td>
+</tr>
+<tr class="odd">
+<td align="left">Ford Pantera L</td>
+<td align="right">14.886076</td>
+<td align="right">267.66704</td>
+<td align="right">1437.9120</td>
+<td align="left">1</td>
+</tr>
+<tr class="even">
+<td align="left">Ferrari Dino</td>
+<td align="right">11.939086</td>
+<td align="right">177.43080</td>
+<td align="right">1256.4720</td>
+<td align="left">1</td>
+</tr>
+<tr class="odd">
+<td align="left">Maserati Bora</td>
+<td align="right">15.680000</td>
+<td align="right">339.65325</td>
+<td align="right">1619.3520</td>
+<td align="left">1</td>
+</tr>
+<tr class="even">
+<td align="left">Volvo 142E</td>
+<td align="right">10.990654</td>
+<td align="right">110.51404</td>
+<td align="right">1261.0080</td>
+<td align="left">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="examining-variables" class="section level2 hasAnchor" number="14.2">
+<h2><span class="header-section-number">14.2</span> Examining variables<a href="analyses-with-r-markdown.html#examining-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="min-max-mean" class="section level3 hasAnchor" number="14.2.1">
+<h3><span class="header-section-number">14.2.1</span> min, max, mean<a href="analyses-with-r-markdown.html#min-max-mean" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>With the command <code>summarise</code> of <em>dplyr</em>, we can easily view e.g. the minimum, maximum and mean values of the variables we want:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb31-1"><a href="analyses-with-r-markdown.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r mean_values, echo=FALSE}</span></span>
+<span id="cb31-2"><a href="analyses-with-r-markdown.html#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="analyses-with-r-markdown.html#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="analyses-with-r-markdown.html#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="in"># Let&#39;s select our dataset &quot;car_dataset6&quot; for processing:</span></span>
+<span id="cb31-5"><a href="analyses-with-r-markdown.html#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="analyses-with-r-markdown.html#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="in">car_dataset6 %&gt;%</span></span>
+<span id="cb31-7"><a href="analyses-with-r-markdown.html#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="analyses-with-r-markdown.html#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="in"># Let&#39;s use the command summarise:</span></span>
+<span id="cb31-9"><a href="analyses-with-r-markdown.html#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-10"><a href="analyses-with-r-markdown.html#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="in">      summarise(fuel_cons_min      = min(fuel_cons_eu),</span></span>
+<span id="cb31-11"><a href="analyses-with-r-markdown.html#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="in">                fuel_cons_max      = max(fuel_cons_eu),</span></span>
+<span id="cb31-12"><a href="analyses-with-r-markdown.html#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="in">                fuel_cons_mean     = mean(fuel_cons_eu))  %&gt;% </span></span>
+<span id="cb31-13"><a href="analyses-with-r-markdown.html#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="in">           </span></span>
+<span id="cb31-14"><a href="analyses-with-r-markdown.html#cb31-14" aria-hidden="true" tabindex="-1"></a><span class="in"># We prettify the output with kable:           </span></span>
+<span id="cb31-15"><a href="analyses-with-r-markdown.html#cb31-15" aria-hidden="true" tabindex="-1"></a><span class="in">           </span></span>
+<span id="cb31-16"><a href="analyses-with-r-markdown.html#cb31-16" aria-hidden="true" tabindex="-1"></a><span class="in">      kable</span></span>
+<span id="cb31-17"><a href="analyses-with-r-markdown.html#cb31-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">fuel_cons_min</th>
+<th align="right">fuel_cons_max</th>
+<th align="right">fuel_cons_mean</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">7.736842</td>
+<td align="right">22.61538</td>
+<td align="right">13.60331</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>You can also print a specific statistic - for example, the mean - for several variables using the <code>summarise_at</code> command. You might want to write free text before the next code, e.g.</p>
+<p>Below you can see the mean values of the variables of the dataset “car_dataset6”.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb32-1"><a href="analyses-with-r-markdown.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r mean_values2, echo=FALSE}</span></span>
+<span id="cb32-2"><a href="analyses-with-r-markdown.html#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="analyses-with-r-markdown.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="in">car_dataset6 %&gt;%</span></span>
+<span id="cb32-4"><a href="analyses-with-r-markdown.html#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-5"><a href="analyses-with-r-markdown.html#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="in"># We use now the command summarise_at. The variables that we want</span></span>
+<span id="cb32-6"><a href="analyses-with-r-markdown.html#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="in"># to look at have to be expressed in the following way:</span></span>
+<span id="cb32-7"><a href="analyses-with-r-markdown.html#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="in"># c(&quot;variable1&quot;, &quot;variable2&quot;, &quot;variable3&quot;)</span></span>
+<span id="cb32-8"><a href="analyses-with-r-markdown.html#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="in"># After these comes the chosen statistic: </span></span>
+<span id="cb32-9"><a href="analyses-with-r-markdown.html#cb32-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-10"><a href="analyses-with-r-markdown.html#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="in">  summarise_at(c(&quot;fuel_cons_eu&quot;, &quot;horsepower_eu&quot;, &quot;mass_eu&quot;), mean) %&gt;% </span></span>
+<span id="cb32-11"><a href="analyses-with-r-markdown.html#cb32-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-12"><a href="analyses-with-r-markdown.html#cb32-12" aria-hidden="true" tabindex="-1"></a><span class="in"># We prettify the output:</span></span>
+<span id="cb32-13"><a href="analyses-with-r-markdown.html#cb32-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-14"><a href="analyses-with-r-markdown.html#cb32-14" aria-hidden="true" tabindex="-1"></a><span class="in">  kable</span></span>
+<span id="cb32-15"><a href="analyses-with-r-markdown.html#cb32-15" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<p><br></p>
+<p>Below you can see the mean values of the variables of “car_dataset6”.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">fuel_cons_eu</th>
+<th align="right">horsepower_eu</th>
+<th align="right">mass_eu</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">13.60331</td>
+<td align="right">165.9536</td>
+<td align="right">1551.711</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>This analysis shows that the cars in our dataset are moderate gas guzzlers.</p>
+</div>
+<div id="summary" class="section level3 hasAnchor" number="14.2.2">
+<h3><span class="header-section-number">14.2.2</span> summary<a href="analyses-with-r-markdown.html#summary" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>With the function <em>summary()</em> you get a summary of your entire dataset.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb33-1"><a href="analyses-with-r-markdown.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r summary, echo=FALSE}</span></span>
+<span id="cb33-2"><a href="analyses-with-r-markdown.html#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="analyses-with-r-markdown.html#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="in">car_dataset6 %&gt;% summary %&gt;% kable()</span></span>
+<span id="cb33-4"><a href="analyses-with-r-markdown.html#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">Car Brands</th>
+<th align="left">fuel_cons_eu</th>
+<th align="left">horsepower_eu</th>
+<th align="left">mass_eu</th>
+<th align="left">gear</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Length:25</td>
+<td align="left">Min. : 7.737</td>
+<td align="left">Min. : 52.72</td>
+<td align="left">Min. : 686.3</td>
+<td align="left">0:16</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">Class :character</td>
+<td align="left">1st Qu.:11.200</td>
+<td align="left">1st Qu.:111.53</td>
+<td align="left">1st Qu.:1304.1</td>
+<td align="left">1: 9</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Mode :character</td>
+<td align="left">Median :13.213</td>
+<td align="left">Median :177.43</td>
+<td align="left">Median :1560.4</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">NA</td>
+<td align="left">Mean :13.603</td>
+<td align="left">Mean :165.95</td>
+<td align="left">Mean :1551.7</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">NA</td>
+<td align="left">3rd Qu.:15.474</td>
+<td align="left">3rd Qu.:207.85</td>
+<td align="left">3rd Qu.:1714.6</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">NA</td>
+<td align="left">Max. :22.615</td>
+<td align="left">Max. :339.65</td>
+<td align="left">Max. :2460.3</td>
+<td align="left">NA</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>If you want, you can also run the <em>summary</em> command for each variable in your dataset separately. You can achieve this by “looping” the <em>summary</em> with a command called <em>sapply</em>. In this case, however, you cannot use <em>kable</em>, so the output is not so pretty.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb34-1"><a href="analyses-with-r-markdown.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r sapply2, echo=FALSE}</span></span>
+<span id="cb34-2"><a href="analyses-with-r-markdown.html#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="analyses-with-r-markdown.html#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="in">car_dataset6 %&gt;% sapply(summary)</span></span>
+<span id="cb34-4"><a href="analyses-with-r-markdown.html#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<pre><code>## $`Car Brands`
+##    Length     Class      Mode 
+##        25 character character 
+## 
+## $fuel_cons_eu
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   7.737  11.200  13.213  13.603  15.474  22.615 
+## 
+## $horsepower_eu
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   52.72  111.53  177.43  165.95  207.85  339.65 
+## 
+## $mass_eu
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   686.3  1304.1  1560.4  1551.7  1714.6  2460.3 
+## 
+## $gear
+##  0  1 
+## 16  9</code></pre>
+<p><br></p>
+<p>There are several packages for R that allow you to get a more beautiful and versatile description of your dataset than the <em>summary</em> command is capable of. Next, one of these packages will be presented.</p>
+</div>
+<div id="summarytools" class="section level3 hasAnchor" number="14.2.3">
+<h3><span class="header-section-number">14.2.3</span> summarytools<a href="analyses-with-r-markdown.html#summarytools" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>With the functions of the <em>summarytools</em> package, you can get beautiful and diverse presentations of your dataset.
+Installation is done by typing <code>install.packages("summarytools")</code> into the console and pressing enter.</p>
+<div id="dfsummary" class="section level4 hasAnchor" number="14.2.3.1">
+<h4><span class="header-section-number">14.2.3.1</span> dfSummary<a href="analyses-with-r-markdown.html#dfsummary" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><em>dfSummary</em> gives a very versatile representation of your entire dataset. See an example of the “car_dataset6” below. Run the following code:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb36-1"><a href="analyses-with-r-markdown.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r summarytools2, echo=FALSE, results=&quot;asis&quot;}</span></span>
+<span id="cb36-2"><a href="analyses-with-r-markdown.html#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="analyses-with-r-markdown.html#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="in"># summarytools requires the attribute results=&quot;asis&quot; to show a pretty</span></span>
+<span id="cb36-4"><a href="analyses-with-r-markdown.html#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="in"># output in R Markdown.</span></span>
+<span id="cb36-5"><a href="analyses-with-r-markdown.html#cb36-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-6"><a href="analyses-with-r-markdown.html#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="in">library(summarytools)</span></span>
+<span id="cb36-7"><a href="analyses-with-r-markdown.html#cb36-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-8"><a href="analyses-with-r-markdown.html#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="in">car_dataset6 %&gt;% dfSummary(varnumbers   = FALSE,</span></span>
+<span id="cb36-9"><a href="analyses-with-r-markdown.html#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="in">                      plain.ascii = FALSE,</span></span>
+<span id="cb36-10"><a href="analyses-with-r-markdown.html#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="in">                      style = &quot;grid&quot;,</span></span>
+<span id="cb36-11"><a href="analyses-with-r-markdown.html#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="in">                      graph.magnif = 0.75,</span></span>
+<span id="cb36-12"><a href="analyses-with-r-markdown.html#cb36-12" aria-hidden="true" tabindex="-1"></a><span class="in">                      max.distinct.values = 3,  # I wrote the number 3 here</span></span>
+<span id="cb36-13"><a href="analyses-with-r-markdown.html#cb36-13" aria-hidden="true" tabindex="-1"></a><span class="in">                                                # in order to not see exhaustive number</span></span>
+<span id="cb36-14"><a href="analyses-with-r-markdown.html#cb36-14" aria-hidden="true" tabindex="-1"></a><span class="in">                                                # of cars in this example.</span></span>
+<span id="cb36-15"><a href="analyses-with-r-markdown.html#cb36-15" aria-hidden="true" tabindex="-1"></a><span class="in">                      valid.col    = FALSE,</span></span>
+<span id="cb36-16"><a href="analyses-with-r-markdown.html#cb36-16" aria-hidden="true" tabindex="-1"></a><span class="in">                      tmp.img.dir  = &quot;/tmp&quot;)</span></span>
+<span id="cb36-17"><a href="analyses-with-r-markdown.html#cb36-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<p><br>
+You will then see the following summary:</p>
+<pre><code>## Registered S3 method overwritten by &#39;pryr&#39;:
+##   method      from
+##   print.bytes Rcpp</code></pre>
+<table style="width:100%;">
+<colgroup>
+<col width="16%" />
+<col width="29%" />
+<col width="20%" />
+<col width="22%" />
+<col width="9%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Stats / Values</th>
+<th>Freqs (% of Valid)</th>
+<th>Graph</th>
+<th>Missing</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Car Brands<br />
+[character]</td>
+<td>1. AMC Javelin<br />
+2. Cadillac Fleetwood<br />
+3. Camaro Z28<br />
+[ 22 others ]</td>
+<td>1 ( 4.0%)<br />
+1 ( 4.0%)<br />
+1 ( 4.0%)<br />
+22 (88.0%)</td>
+<td><img src="/private/tmp/ds0101.png" /></td>
+<td>0<br />
+(0.0%)</td>
+</tr>
+<tr class="even">
+<td>fuel_cons_eu<br />
+[numeric]</td>
+<td>Mean (sd) : 13.6 (3.8)<br />
+min &lt; med &lt; max:<br />
+7.7 &lt; 13.2 &lt; 22.6<br />
+IQR (CV) : 4.3 (0.3)</td>
+<td>20 distinct values</td>
+<td><img src="/private/tmp/ds0102.png" /></td>
+<td>0<br />
+(0.0%)</td>
+</tr>
+<tr class="odd">
+<td>horsepower_eu<br />
+[numeric]</td>
+<td>Mean (sd) : 166 (68.8)<br />
+min &lt; med &lt; max:<br />
+52.7 &lt; 177.4 &lt; 339.7<br />
+IQR (CV) : 96.3 (0.4)</td>
+<td>17 distinct values</td>
+<td><img src="/private/tmp/ds0103.png" /></td>
+<td>0<br />
+(0.0%)</td>
+</tr>
+<tr class="even">
+<td>mass_eu<br />
+[numeric]</td>
+<td>Mean (sd) : 1551.7 (440.4)<br />
+min &lt; med &lt; max:<br />
+686.3 &lt; 1560.4 &lt; 2460.3<br />
+IQR (CV) : 410.5 (0.3)</td>
+<td>22 distinct values</td>
+<td><img src="/private/tmp/ds0104.png" /></td>
+<td>0<br />
+(0.0%)</td>
+</tr>
+<tr class="odd">
+<td>gear<br />
+[factor]</td>
+<td>1. 0<br />
+2. 1</td>
+<td>16 (64.0%)<br />
+9 (36.0%)</td>
+<td><img src="/private/tmp/ds0105.png" /></td>
+<td>0<br />
+(0.0%)</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+</div>
+<div id="descr" class="section level4 hasAnchor" number="14.2.3.2">
+<h4><span class="header-section-number">14.2.3.2</span> descr<a href="analyses-with-r-markdown.html#descr" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The function <em>descr</em> of the <em>summarytools</em> package takes only continuous (numerical) variables from the dataset for processing and displays different statistics according to the user’s wishes. Look at the following examples.</p>
+<p>First example:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb38-1"><a href="analyses-with-r-markdown.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r descr, echo=FALSE, results=&quot;asis&quot;}</span></span>
+<span id="cb38-2"><a href="analyses-with-r-markdown.html#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="analyses-with-r-markdown.html#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="in">library(summarytools)</span></span>
+<span id="cb38-4"><a href="analyses-with-r-markdown.html#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-5"><a href="analyses-with-r-markdown.html#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="in">descr(car_dataset6,</span></span>
+<span id="cb38-6"><a href="analyses-with-r-markdown.html#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="in">      stats     = &quot;common&quot;,</span></span>
+<span id="cb38-7"><a href="analyses-with-r-markdown.html#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="in">      transpose = TRUE,</span></span>
+<span id="cb38-8"><a href="analyses-with-r-markdown.html#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="in">      headings  = FALSE)</span></span>
+<span id="cb38-9"><a href="analyses-with-r-markdown.html#cb38-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<p><br></p>
+<p>We asked for “common” identifiers - you can see what the <em>descr</em> command thinks they are from the table below.</p>
+<p>Note that R throws a warning above the table that only numeric variables made it into the analysis, which was already known:</p>
+<pre><code>## Non-numerical variable(s) ignored: Car Brands, gear</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">Mean</th>
+<th align="right">Std.Dev</th>
+<th align="right">Min</th>
+<th align="right">Median</th>
+<th align="right">Max</th>
+<th align="right">N.Valid</th>
+<th align="right">Pct.Valid</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>fuel_cons_eu</td>
+<td align="right">13.60</td>
+<td align="right">3.82</td>
+<td align="right">7.74</td>
+<td align="right">13.21</td>
+<td align="right">22.62</td>
+<td align="right">25.00</td>
+<td align="right">100.00</td>
+</tr>
+<tr class="even">
+<td>horsepower_eu</td>
+<td align="right">165.95</td>
+<td align="right">68.76</td>
+<td align="right">52.72</td>
+<td align="right">177.43</td>
+<td align="right">339.65</td>
+<td align="right">25.00</td>
+<td align="right">100.00</td>
+</tr>
+<tr class="odd">
+<td>mass_eu</td>
+<td align="right">1551.71</td>
+<td align="right">440.39</td>
+<td align="right">686.30</td>
+<td align="right">1560.38</td>
+<td align="right">2460.33</td>
+<td align="right">25.00</td>
+<td align="right">100.00</td>
+</tr>
+</tbody>
+</table>
+<p><br>
+<br></p>
+<p>In the second example, we define manually the statistics we want:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb40-1"><a href="analyses-with-r-markdown.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r descr2, echo=FALSE, results=&quot;asis&quot;}</span></span>
+<span id="cb40-2"><a href="analyses-with-r-markdown.html#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="analyses-with-r-markdown.html#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="in">library(summarytools)</span></span>
+<span id="cb40-4"><a href="analyses-with-r-markdown.html#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="in">descr(car_dataset6,</span></span>
+<span id="cb40-5"><a href="analyses-with-r-markdown.html#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="in">      stats     = c(&quot;mean&quot;,&quot;sd&quot;,&quot;min&quot;,&quot;max&quot;),</span></span>
+<span id="cb40-6"><a href="analyses-with-r-markdown.html#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="in">      transpose = TRUE,</span></span>
+<span id="cb40-7"><a href="analyses-with-r-markdown.html#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="in">      headings  = FALSE)</span></span>
+<span id="cb40-8"><a href="analyses-with-r-markdown.html#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<pre><code>## Non-numerical variable(s) ignored: Car Brands, gear</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">Mean</th>
+<th align="right">Std.Dev</th>
+<th align="right">Min</th>
+<th align="right">Max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>fuel_cons_eu</td>
+<td align="right">13.60</td>
+<td align="right">3.82</td>
+<td align="right">7.74</td>
+<td align="right">22.62</td>
+</tr>
+<tr class="even">
+<td>horsepower_eu</td>
+<td align="right">165.95</td>
+<td align="right">68.76</td>
+<td align="right">52.72</td>
+<td align="right">339.65</td>
+</tr>
+<tr class="odd">
+<td>mass_eu</td>
+<td align="right">1551.71</td>
+<td align="right">440.39</td>
+<td align="right">686.30</td>
+<td align="right">2460.33</td>
+</tr>
+</tbody>
+</table>
+<p><br>
+<br></p>
+<p>By typing <code>?descr</code> in the console, you can find out more about all the statistics (the section “stats” of the <em>Help</em>) you can request from the <em>descr</em> function.</p>
+<p><br></p>
+</div>
+<div id="freq" class="section level4 hasAnchor" number="14.2.3.3">
+<h4><span class="header-section-number">14.2.3.3</span> freq<a href="analyses-with-r-markdown.html#freq" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The function <em>freq</em> of the <em>summarytools</em> package is used to study the characteristics of categorical variables: n-numbers, percentages and cumulative frequency of categories.</p>
+<p>I’ve tweaked the sample code below to make this function as similar to SAS’s great PROC FREQ as possible.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb42-1"><a href="analyses-with-r-markdown.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r freq, echo=FALSE, results=&quot;asis&quot;}</span></span>
+<span id="cb42-2"><a href="analyses-with-r-markdown.html#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="analyses-with-r-markdown.html#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="in">library(summarytools)</span></span>
+<span id="cb42-4"><a href="analyses-with-r-markdown.html#cb42-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-5"><a href="analyses-with-r-markdown.html#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="in">st_options(freq.cumul = TRUE,</span></span>
+<span id="cb42-6"><a href="analyses-with-r-markdown.html#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="in">     freq.totals    = TRUE,</span></span>
+<span id="cb42-7"><a href="analyses-with-r-markdown.html#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="in">     freq.report.nas    = FALSE,</span></span>
+<span id="cb42-8"><a href="analyses-with-r-markdown.html#cb42-8" aria-hidden="true" tabindex="-1"></a><span class="in">     plain.ascii = FALSE,</span></span>
+<span id="cb42-9"><a href="analyses-with-r-markdown.html#cb42-9" aria-hidden="true" tabindex="-1"></a><span class="in">     headings = FALSE)</span></span>
+<span id="cb42-10"><a href="analyses-with-r-markdown.html#cb42-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-11"><a href="analyses-with-r-markdown.html#cb42-11" aria-hidden="true" tabindex="-1"></a><span class="in">freq(car_dataset6$gear,</span></span>
+<span id="cb42-12"><a href="analyses-with-r-markdown.html#cb42-12" aria-hidden="true" tabindex="-1"></a><span class="in">     style = &#39;rmarkdown&#39;,</span></span>
+<span id="cb42-13"><a href="analyses-with-r-markdown.html#cb42-13" aria-hidden="true" tabindex="-1"></a><span class="in">     caption = &#39;Frequencies: car_dataset6$gear&#39;)</span></span>
+<span id="cb42-14"><a href="analyses-with-r-markdown.html#cb42-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-15"><a href="analyses-with-r-markdown.html#cb42-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-16"><a href="analyses-with-r-markdown.html#cb42-16" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<p><br></p>
+<p>With the code shown above, we look at the identifiers of the categories (0 and 1) of the categorical variable “gear” of “car_dataset6”. I only removed the titles for “printing reasons” related to the numbering of the chapters in this guide; for the same reason, I manually added the title (caption text). The table is shown here below:</p>
+<p><br></p>
+<table>
+<caption>Frequencies: car_dataset6$gear</caption>
+<thead>
+<tr class="header">
+<th align="right"> </th>
+<th align="right">Freq</th>
+<th align="right">%</th>
+<th align="right">% Cum.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right"><strong>0</strong></td>
+<td align="right">16</td>
+<td align="right">64.00</td>
+<td align="right">64.00</td>
+</tr>
+<tr class="even">
+<td align="right"><strong>1</strong></td>
+<td align="right">9</td>
+<td align="right">36.00</td>
+<td align="right">100.00</td>
+</tr>
+<tr class="odd">
+<td align="right"><strong>Total</strong></td>
+<td align="right">25</td>
+<td align="right">100.00</td>
+<td align="right">100.00</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+</div>
+<div id="ctable" class="section level4 hasAnchor" number="14.2.3.4">
+<h4><span class="header-section-number">14.2.3.4</span> ctable<a href="analyses-with-r-markdown.html#ctable" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The function <em>ctable</em> of the <em>summarytools</em> package can perform cross-tabulations somewhat in the same way as SAS’s PROC FREQ.</p>
+<p>For this exercise, we’ll make a new categorical variable “gasguzzler”:</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb43-1"><a href="analyses-with-r-markdown.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r ctable, echo=FALSE, results=&#39;asis&#39;}</span></span>
+<span id="cb43-2"><a href="analyses-with-r-markdown.html#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="analyses-with-r-markdown.html#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="in">library(summarytools)</span></span>
+<span id="cb43-4"><a href="analyses-with-r-markdown.html#cb43-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-5"><a href="analyses-with-r-markdown.html#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="in">car_dataset6 %&gt;% mutate(gasguzzler = ifelse(fuel_cons_eu &lt; 13.2, 0, 1)) -&gt; car_dataset7</span></span>
+<span id="cb43-6"><a href="analyses-with-r-markdown.html#cb43-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-7"><a href="analyses-with-r-markdown.html#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="in">car_dataset7$gasguzzler &lt;- as.factor(car_dataset7$gasguzzler)</span></span>
+<span id="cb43-8"><a href="analyses-with-r-markdown.html#cb43-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-9"><a href="analyses-with-r-markdown.html#cb43-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-10"><a href="analyses-with-r-markdown.html#cb43-10" aria-hidden="true" tabindex="-1"></a><span class="in">ctable(x = car_dataset7$gear, </span></span>
+<span id="cb43-11"><a href="analyses-with-r-markdown.html#cb43-11" aria-hidden="true" tabindex="-1"></a><span class="in">       y = car_dataset7$gasguzzler, </span></span>
+<span id="cb43-12"><a href="analyses-with-r-markdown.html#cb43-12" aria-hidden="true" tabindex="-1"></a><span class="in">       prop     = &#39;r&#39;,</span></span>
+<span id="cb43-13"><a href="analyses-with-r-markdown.html#cb43-13" aria-hidden="true" tabindex="-1"></a><span class="in">       totals   = T, </span></span>
+<span id="cb43-14"><a href="analyses-with-r-markdown.html#cb43-14" aria-hidden="true" tabindex="-1"></a><span class="in">       headings = FALSE)</span></span>
+<span id="cb43-15"><a href="analyses-with-r-markdown.html#cb43-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-16"><a href="analyses-with-r-markdown.html#cb43-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-17"><a href="analyses-with-r-markdown.html#cb43-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<table>
+<tbody>
+<tr class="odd">
+<td></td>
+<td align="right">gasguzzler</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">Total</td>
+</tr>
+<tr class="even">
+<td>gear</td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td>0</td>
+<td align="right"></td>
+<td align="right">5 (31.2%)</td>
+<td align="right">11 (68.8%)</td>
+<td align="right">16 (100.0%)</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td align="right"></td>
+<td align="right">7 (77.8%)</td>
+<td align="right">2 (22.2%)</td>
+<td align="right">9 (100.0%)</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td align="right"></td>
+<td align="right">12 (48.0%)</td>
+<td align="right">13 (52.0%)</td>
+<td align="right">25 (100.0%)</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+</div>
+</div>
+<div id="questionrfreq" class="section level3 hasAnchor" number="14.2.4">
+<h3><span class="header-section-number">14.2.4</span> questionr::freq<a href="analyses-with-r-markdown.html#questionrfreq" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Recently, instead of the function <em>freq</em> from the <em>summarytools</em> package, I have been using the function <em>freq</em> from the <em>questionr</em> package quite a lot. This has the following advantages:</p>
+<ul>
+<li>If you run the analysis in (or “under”) the chunk (by pressing the play button on the upper right of the chunk), the result of the analysis is shown in a nice, “non-ASCII-like” printout under the chunk.</li>
+<li>If you set “paged” as the format of the HTML file in the YAML section at the beginning of the document, the same pretty output of <em>questionr::freq</em> continues even in the HTML file, after pressing the button <em>Knit</em>.</li>
+</ul>
+<p>Disadvantages:</p>
+<ul>
+<li>You want see the name of the processed variable anywhere
+<ul>
+<li>This can be remedied by writing something about the variable in question above the code chunk (for instance in the subheading of the R Markdown document)</li>
+</ul></li>
+</ul>
+<p>Below is a working example with YAML sections.</p>
+<pre><code>---
+title: Practicing the use of questionr::freq
+author: &quot;John Doe&quot;
+output:
+  html_document:
+    df_print: &quot;paged&quot;
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Frequency table of the categorical variable &quot;gear&quot;
+
+```{r practicing questionr_freq, echo=FALSE}
+library(questionr)
+questionr::freq(car_dataset6$gear, total = T)
+```</code></pre>
+<p><br>
+<br>
+With the above code, you will get the following HTML output after knitting the R Markdown document:
+<br>
+<br></p>
+<p><img src="images/questionr_freq.png" /></p>
+<p><br></p>
+</div>
+<div id="table1" class="section level3 hasAnchor" number="14.2.5">
+<h3><span class="header-section-number">14.2.5</span> table1<a href="analyses-with-r-markdown.html#table1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You should also consider installing the <em>table1</em> package. Another equally good option is the package <em>tableone</em>. With both of these, a very simple command can generate a “Table 1. Characteristics” table for the article being worked on.</p>
+<p>You can install the <em>table1</em> package by issuing the following command in the console:</p>
+<pre><code>install.packages(&quot;table1&quot;)</code></pre>
+<p><br></p>
+<p>After that, you can try the package as follows:</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb46-1"><a href="analyses-with-r-markdown.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r table1, echo=FALSE}</span></span>
+<span id="cb46-2"><a href="analyses-with-r-markdown.html#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-3"><a href="analyses-with-r-markdown.html#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="in">library(table1)</span></span>
+<span id="cb46-4"><a href="analyses-with-r-markdown.html#cb46-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-5"><a href="analyses-with-r-markdown.html#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="in">label(car_dataset6$fuel_cons_eu) &lt;- &quot;Fuel consumption&quot;</span></span>
+<span id="cb46-6"><a href="analyses-with-r-markdown.html#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="in">label(car_dataset6$horsepower_eu) &lt;- &quot;Horse power&quot;</span></span>
+<span id="cb46-7"><a href="analyses-with-r-markdown.html#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="in">label(car_dataset6$mass_eu) &lt;- &quot;Mass&quot;</span></span>
+<span id="cb46-8"><a href="analyses-with-r-markdown.html#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="in">label(car_dataset6$gear) &lt;- &quot;Gear&quot;</span></span>
+<span id="cb46-9"><a href="analyses-with-r-markdown.html#cb46-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-10"><a href="analyses-with-r-markdown.html#cb46-10" aria-hidden="true" tabindex="-1"></a><span class="in">units(car_dataset6$fuel_cons_eu) &lt;- &quot;l/100 km&quot;</span></span>
+<span id="cb46-11"><a href="analyses-with-r-markdown.html#cb46-11" aria-hidden="true" tabindex="-1"></a><span class="in">units(car_dataset6$mass_eu) &lt;- &quot;kg&quot;</span></span>
+<span id="cb46-12"><a href="analyses-with-r-markdown.html#cb46-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-13"><a href="analyses-with-r-markdown.html#cb46-13" aria-hidden="true" tabindex="-1"></a><span class="in">table1(~ fuel_cons_eu + horsepower_eu + mass_eu + factor(gear),</span></span>
+<span id="cb46-14"><a href="analyses-with-r-markdown.html#cb46-14" aria-hidden="true" tabindex="-1"></a><span class="in">       caption = &quot;Table 1. Characteristics&quot;,</span></span>
+<span id="cb46-15"><a href="analyses-with-r-markdown.html#cb46-15" aria-hidden="true" tabindex="-1"></a><span class="in">       data=car_dataset6)</span></span>
+<span id="cb46-16"><a href="analyses-with-r-markdown.html#cb46-16" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;table1&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:summarytools&#39;:
+## 
+##     label, label&lt;-</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     units, units&lt;-</code></pre>
+<div class="Rtable1"><table class="Rtable1"><caption>Table 1. Characteristics</caption>
+
+<thead>
+<tr>
+<th class='rowlabel firstrow lastrow'></th>
+<th class='firstrow lastrow'><span class='stratlabel'>Overall<br><span class='stratn'>(N=25)</span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='rowlabel firstrow'>Fuel consumption (l/100 km)</td>
+<td class='firstrow'></td>
+</tr>
+<tr>
+<td class='rowlabel'>Mean (SD)</td>
+<td>13.6 (3.82)</td>
+</tr>
+<tr>
+<td class='rowlabel lastrow'>Median [Min, Max]</td>
+<td class='lastrow'>13.2 [7.74, 22.6]</td>
+</tr>
+<tr>
+<td class='rowlabel firstrow'>Horse power</td>
+<td class='firstrow'></td>
+</tr>
+<tr>
+<td class='rowlabel'>Mean (SD)</td>
+<td>166 (68.8)</td>
+</tr>
+<tr>
+<td class='rowlabel lastrow'>Median [Min, Max]</td>
+<td class='lastrow'>177 [52.7, 340]</td>
+</tr>
+<tr>
+<td class='rowlabel firstrow'>Mass (kg)</td>
+<td class='firstrow'></td>
+</tr>
+<tr>
+<td class='rowlabel'>Mean (SD)</td>
+<td>1550 (440)</td>
+</tr>
+<tr>
+<td class='rowlabel lastrow'>Median [Min, Max]</td>
+<td class='lastrow'>1560 [686, 2460]</td>
+</tr>
+<tr>
+<td class='rowlabel firstrow'>factor(gear)</td>
+<td class='firstrow'></td>
+</tr>
+<tr>
+<td class='rowlabel'>0</td>
+<td>16 (64.0%)</td>
+</tr>
+<tr>
+<td class='rowlabel lastrow'>1</td>
+<td class='lastrow'>9 (36.0%)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="graphs" class="section level2 hasAnchor" number="14.3">
+<h2><span class="header-section-number">14.3</span> Graphs<a href="analyses-with-r-markdown.html#graphs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>You can easily add graphs to your R Markdown document. Next, we’ll look at Base-R’s <em>plot</em> command, followed by the versatile <em>ggplot</em>.</p>
+<div id="plot" class="section level3 hasAnchor" number="14.3.1">
+<h3><span class="header-section-number">14.3.1</span> plot<a href="analyses-with-r-markdown.html#plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The command <em>plot</em> belongs to Base-R. Try the following code:</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb50-1"><a href="analyses-with-r-markdown.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r fuel_consumption, echo=FALSE}</span></span>
+<span id="cb50-2"><a href="analyses-with-r-markdown.html#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="in">plot(car_dataset6$horsepower_eu, car_dataset6$fuel_cons_eu)</span></span>
+<span id="cb50-3"><a href="analyses-with-r-markdown.html#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/bensankulutus-1.png" width="672" /></p>
+</div>
+<div id="ggplot2" class="section level3 hasAnchor" number="14.3.2">
+<h3><span class="header-section-number">14.3.2</span> ggplot2<a href="analyses-with-r-markdown.html#ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For even slightly more complex plots, I recommend that you consider installing the <em>ggplot2</em> package by issuing the following command in the console:</p>
+<pre><code>install.packages(&quot;ggplot2&quot;)</code></pre>
+<p><br></p>
+<p>After that, you can redo with ggplot2 the graph already presented above, and you can, for example, add a regression line as follows:</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb52-1"><a href="analyses-with-r-markdown.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r fuel_cons_ggplot2, echo=FALSE, message = FALSE}</span></span>
+<span id="cb52-2"><a href="analyses-with-r-markdown.html#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-3"><a href="analyses-with-r-markdown.html#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="in"># ggplot2 is somewhat &quot;talky&quot;, so I added the</span></span>
+<span id="cb52-4"><a href="analyses-with-r-markdown.html#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="in"># option message = FALSE above; of course you can try</span></span>
+<span id="cb52-5"><a href="analyses-with-r-markdown.html#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="in"># removing it.</span></span>
+<span id="cb52-6"><a href="analyses-with-r-markdown.html#cb52-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-7"><a href="analyses-with-r-markdown.html#cb52-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-8"><a href="analyses-with-r-markdown.html#cb52-8" aria-hidden="true" tabindex="-1"></a><span class="in">library(ggplot2)</span></span>
+<span id="cb52-9"><a href="analyses-with-r-markdown.html#cb52-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-10"><a href="analyses-with-r-markdown.html#cb52-10" aria-hidden="true" tabindex="-1"></a><span class="in">ggplot(car_dataset6, aes(horsepower_eu, fuel_cons_eu)) +</span></span>
+<span id="cb52-11"><a href="analyses-with-r-markdown.html#cb52-11" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_point() +</span></span>
+<span id="cb52-12"><a href="analyses-with-r-markdown.html#cb52-12" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_smooth(method=&#39;lm&#39;)       # + theme_classic()</span></span>
+<span id="cb52-13"><a href="analyses-with-r-markdown.html#cb52-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-14"><a href="analyses-with-r-markdown.html#cb52-14" aria-hidden="true" tabindex="-1"></a><span class="in"># you can remove the above hashtag if you want a classic theme</span></span>
+<span id="cb52-15"><a href="analyses-with-r-markdown.html#cb52-15" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/bensankulutus_ggplot2-1.png" width="672" /></p>
+<p><br></p>
+<p>If you don’t like background colors or colors in general in your graph, these can be adjusted endlessly and very precisely when using <em>ggplot2</em>. There are also ready-made various themes; if you want, you can try how <em>theme_classic</em> looks like by removing the hashtag symbol before it in the example code above.</p>
+</div>
+</div>
+<div id="linear-regression" class="section level2 hasAnchor" number="14.4">
+<h2><span class="header-section-number">14.4</span> Linear regression<a href="analyses-with-r-markdown.html#linear-regression" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Above, we examined the connection between horse power and gas consumption with graphs. You can study the same set of questions numerically with linear regression.</p>
+<div id="simple-regression" class="section level3 hasAnchor" number="14.4.1">
+<h3><span class="header-section-number">14.4.1</span> Simple regression<a href="analyses-with-r-markdown.html#simple-regression" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We start with the so-called simple linear regression:</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb53-1"><a href="analyses-with-r-markdown.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r simple_linear_regression, echo=FALSE}</span></span>
+<span id="cb53-2"><a href="analyses-with-r-markdown.html#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-3"><a href="analyses-with-r-markdown.html#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="in"># For the code to work, the expression &quot;data = .&quot; is required. which means that</span></span>
+<span id="cb53-4"><a href="analyses-with-r-markdown.html#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="in"># that the data that came through the &quot;pipe&quot; is included in the regression mode</span></span>
+<span id="cb53-5"><a href="analyses-with-r-markdown.html#cb53-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-6"><a href="analyses-with-r-markdown.html#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="in">car_dataset6 %&gt;%</span></span>
+<span id="cb53-7"><a href="analyses-with-r-markdown.html#cb53-7" aria-hidden="true" tabindex="-1"></a><span class="in">          lm(fuel_cons_eu ~ horsepower_eu, data = .) %&gt;%</span></span>
+<span id="cb53-8"><a href="analyses-with-r-markdown.html#cb53-8" aria-hidden="true" tabindex="-1"></a><span class="in">          summary()</span></span>
+<span id="cb53-9"><a href="analyses-with-r-markdown.html#cb53-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = fuel_cons_eu ~ horsepower_eu, data = .)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -4.7143 -1.4745 -0.2755  0.8574  7.3742 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   7.115144   1.477471   4.816 7.37e-05 ***
+## horsepower_eu 0.039096   0.008249   4.739 8.91e-05 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 2.779 on 23 degrees of freedom
+## Multiple R-squared:  0.4941, Adjusted R-squared:  0.4721 
+## F-statistic: 22.46 on 1 and 23 DF,  p-value: 8.912e-05</code></pre>
+<p>Let’s take a look at the results. When examining the association of horse power with gas consumption, the slope turned out to be 0.039096 and the P-value was 8.91e-05 ***.</p>
+<p>So horse power seems to be related to gas consumption, at least when examined with simple linear regression.</p>
+<p>The output on the screen just looks unpretty when produced with the <em>summary</em> command of the Base-R. <em>tidy</em> will help us - more about that in the following.</p>
+</div>
+<div id="tidy" class="section level3 hasAnchor" number="14.4.2">
+<h3><span class="header-section-number">14.4.2</span> tidy<a href="analyses-with-r-markdown.html#tidy" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In the previous paragraph, we ran a simple linear regression and looked at the results with the <em>summary</em> command, but the output was esthetically not pleasing to the eye.</p>
+<p>To remedy this, you might want to install the package <em>broom</em>. The package in question comes with the command <em>tidy</em>, which can be used to print the results of the regression model in a beautiful way when <em>kable</em> is also put in the same pipe.</p>
+<p>You can install the package <em>broom</em> by running the following command in the console:</p>
+<pre><code>install.packages(&quot;broom&quot;)</code></pre>
+<p><br></p>
+<p>You can then run the following code:</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb56-1"><a href="analyses-with-r-markdown.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r simple_regression_tidy, echo=FALSE}</span></span>
+<span id="cb56-2"><a href="analyses-with-r-markdown.html#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-3"><a href="analyses-with-r-markdown.html#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="in"># Note that you can also put the library(broom) command directly in your r setup chunk,</span></span>
+<span id="cb56-4"><a href="analyses-with-r-markdown.html#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="in"># so it doesn&#39;t have to be repeated constantly:</span></span>
+<span id="cb56-5"><a href="analyses-with-r-markdown.html#cb56-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-6"><a href="analyses-with-r-markdown.html#cb56-6" aria-hidden="true" tabindex="-1"></a><span class="in">library(broom)</span></span>
+<span id="cb56-7"><a href="analyses-with-r-markdown.html#cb56-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-8"><a href="analyses-with-r-markdown.html#cb56-8" aria-hidden="true" tabindex="-1"></a><span class="in">car_dataset6 %&gt;%</span></span>
+<span id="cb56-9"><a href="analyses-with-r-markdown.html#cb56-9" aria-hidden="true" tabindex="-1"></a><span class="in">          lm(fuel_cons_eu ~ horsepower_eu, data = .) %&gt;%</span></span>
+<span id="cb56-10"><a href="analyses-with-r-markdown.html#cb56-10" aria-hidden="true" tabindex="-1"></a><span class="in">          tidy %&gt;% </span></span>
+<span id="cb56-11"><a href="analyses-with-r-markdown.html#cb56-11" aria-hidden="true" tabindex="-1"></a><span class="in">          kable</span></span>
+<span id="cb56-12"><a href="analyses-with-r-markdown.html#cb56-12" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<p><br>
+As you can see below, tidy and kable work together to produce a prettier output that you can share to your colleagues:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">term</th>
+<th align="right">estimate</th>
+<th align="right">std.error</th>
+<th align="right">statistic</th>
+<th align="right">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">(Intercept)</td>
+<td align="right">7.1151438</td>
+<td align="right">1.4774711</td>
+<td align="right">4.815758</td>
+<td align="right">7.37e-05</td>
+</tr>
+<tr class="even">
+<td align="left">horsepower_eu</td>
+<td align="right">0.0390963</td>
+<td align="right">0.0082491</td>
+<td align="right">4.739457</td>
+<td align="right">8.91e-05</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="multiple-regression" class="section level3 hasAnchor" number="14.4.3">
+<h3><span class="header-section-number">14.4.3</span> Multiple regression<a href="analyses-with-r-markdown.html#multiple-regression" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let’s continue with the linear model but add mass and gear as covariates. In this case, we’re dealing with a multiple linear regression model.</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb57-1"><a href="analyses-with-r-markdown.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r multiple_regression, echo=FALSE}</span></span>
+<span id="cb57-2"><a href="analyses-with-r-markdown.html#cb57-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-3"><a href="analyses-with-r-markdown.html#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="in">library(broom)</span></span>
+<span id="cb57-4"><a href="analyses-with-r-markdown.html#cb57-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-5"><a href="analyses-with-r-markdown.html#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="in">car_dataset6 %&gt;%</span></span>
+<span id="cb57-6"><a href="analyses-with-r-markdown.html#cb57-6" aria-hidden="true" tabindex="-1"></a><span class="in">          lm(fuel_cons_eu ~ horsepower_eu + mass_eu + gear, data = .) %&gt;%</span></span>
+<span id="cb57-7"><a href="analyses-with-r-markdown.html#cb57-7" aria-hidden="true" tabindex="-1"></a><span class="in">          tidy %&gt;%</span></span>
+<span id="cb57-8"><a href="analyses-with-r-markdown.html#cb57-8" aria-hidden="true" tabindex="-1"></a><span class="in">          kable</span></span>
+<span id="cb57-9"><a href="analyses-with-r-markdown.html#cb57-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">term</th>
+<th align="right">estimate</th>
+<th align="right">std.error</th>
+<th align="right">statistic</th>
+<th align="right">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">(Intercept)</td>
+<td align="right">0.8439313</td>
+<td align="right">2.0599787</td>
+<td align="right">0.4096796</td>
+<td align="right">0.6861899</td>
+</tr>
+<tr class="even">
+<td align="left">horsepower_eu</td>
+<td align="right">0.0157904</td>
+<td align="right">0.0069578</td>
+<td align="right">2.2694621</td>
+<td align="right">0.0338970</td>
+</tr>
+<tr class="odd">
+<td align="left">mass_eu</td>
+<td align="right">0.0064374</td>
+<td align="right">0.0014619</td>
+<td align="right">4.4033854</td>
+<td align="right">0.0002477</td>
+</tr>
+<tr class="even">
+<td align="left">gear1</td>
+<td align="right">0.4164721</td>
+<td align="right">1.0858710</td>
+<td align="right">0.3835373</td>
+<td align="right">0.7051768</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>Horsepower still seems to be related to gas consumption, but not as strongly anymore. Mass seems to be more related to gas consumption. Interestingly, gear doesn’t seem to be related to fuel consumption.</p>
+<br>
+<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">
+<a property="dct:title" rel="cc:attributionURL" href="https://vldesign.kapsi.fi/r-guide-in-english/">R guide</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="http://www.linkedin.com/in/ville-langen">Ville Langén</a> is licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution-ShareAlike 4.0 International<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1"></a>
+</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="creating-r-markdown.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="afterword.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+# Workflow when coding R
+
+When working with R, the workflow often goes as follows:
+
+1. research data are prepared with "bare" R scripts
+2. subsequently, the statistical analyzes are run directly in the R Markdown document
+
+The division of workflow into 1) R scripts and 2) R Markdown documents is of course completely free and individual - some do everything or almost everything directly in R Markdown documents, while others make only the actual statistical analyzes and visualizations in R Markdown.
+
+You may ask what is the use of analyzing data in an R Markdown document - I will answer as follows.
+
+Imagine a situation where you were to write a report for your colleagues using MS Word, with several tables and graphs alongside the text. If your supervisor notices an error and asks you to correct your data, you should insert the new tables and graphs one by one into a new MS Word document after the corrections. (Editor's note: "Been there, done that... 😭") In an R Markdown document, there is no need for this: tables and graphs are automatically updated if you change something in your data.
+
+If you want, you can always "cement" the text you wrote with R Markdown - complete with graphs and tables - and share it, for example, in MS Word format to your colleagues - or as a PDF.
+
+The third option is to do as I did with this text, which you're probably reading right now in web form: I decided to translate it into HTML to turn this guide into a web page.
+
+
+
+<br>
+<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://vldesign.kapsi.fi/r-guide-in-english/">R guide</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="http://www.linkedin.com/in/ville-langen">Ville Langén</a> is licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution-ShareAlike 4.0 International<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1"></a></p>

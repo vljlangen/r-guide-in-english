@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>13 Creating R Markdown | R guide</title>
+  <meta name="description" content="13 Creating R Markdown | R guide" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="13 Creating R Markdown | R guide" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="13 Creating R Markdown | R guide" />
+  
+  
+  
+
+<meta name="author" content="Ville Langén" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="code-for-example-data.html"/>
+<link rel="next" href="analyses-with-r-markdown.html"/>
+<script src="libs/header-attrs-2.16/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/table1-1.0/table1_defaults.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li> <a href="https://vldesign.kapsi.fi/r/"><i class="fa fa-language fa-fw"></i> Finnish version - suomeksi<span></span></a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface<span></span></a></li>
+<li class="chapter" data-level="2" data-path="r-language.html"><a href="r-language.html"><i class="fa fa-check"></i><b>2</b> R language<span></span></a></li>
+<li class="chapter" data-level="3" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>3</b> R Markdown<span></span></a></li>
+<li class="chapter" data-level="4" data-path="workflow-when-coding-r.html"><a href="workflow-when-coding-r.html"><i class="fa fa-check"></i><b>4</b> Workflow when coding R<span></span></a></li>
+<li class="chapter" data-level="5" data-path="installation-on-a-computer.html"><a href="installation-on-a-computer.html"><i class="fa fa-check"></i><b>5</b> Installation on a computer<span></span></a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="installation-on-a-computer.html"><a href="installation-on-a-computer.html#r-language-installation"><i class="fa fa-check"></i><b>5.1</b> R language installation<span></span></a></li>
+<li class="chapter" data-level="5.2" data-path="installation-on-a-computer.html"><a href="installation-on-a-computer.html#installation-of-rstudio"><i class="fa fa-check"></i><b>5.2</b> Installation of RStudio<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="r-scripts.html"><a href="r-scripts.html"><i class="fa fa-check"></i><b>6</b> R scripts<span></span></a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="r-scripts.html"><a href="r-scripts.html#basic-view-of-rstudio"><i class="fa fa-check"></i><b>6.1</b> Basic view of RStudio<span></span></a></li>
+<li class="chapter" data-level="6.2" data-path="r-scripts.html"><a href="r-scripts.html#creating-an-r-script"><i class="fa fa-check"></i><b>6.2</b> Creating an R script<span></span></a></li>
+<li class="chapter" data-level="6.3" data-path="r-scripts.html"><a href="r-scripts.html#downloading-of-dplyr"><i class="fa fa-check"></i><b>6.3</b> Downloading of dplyr<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="example-dataset.html"><a href="example-dataset.html"><i class="fa fa-check"></i><b>7</b> Example dataset<span></span></a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="example-dataset.html"><a href="example-dataset.html#editing-data-with-dplyr"><i class="fa fa-check"></i><b>7.1</b> Editing data with dplyr<span></span></a></li>
+<li class="chapter" data-level="7.2" data-path="example-dataset.html"><a href="example-dataset.html#recap-of-dplyr"><i class="fa fa-check"></i><b>7.2</b> Recap of dplyr<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="missing-data.html"><a href="missing-data.html"><i class="fa fa-check"></i><b>8</b> Missing data?<span></span></a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="missing-data.html"><a href="missing-data.html#removal-of-missing-data"><i class="fa fa-check"></i><b>8.1</b> Removal of missing data<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="destruction-of-datasets.html"><a href="destruction-of-datasets.html"><i class="fa fa-check"></i><b>9</b> Destruction of datasets<span></span></a></li>
+<li class="chapter" data-level="10" data-path="transformation-variables.html"><a href="transformation-variables.html"><i class="fa fa-check"></i><b>10</b> Transformation variables<span></span></a></li>
+<li class="chapter" data-level="11" data-path="categorical-variables.html"><a href="categorical-variables.html"><i class="fa fa-check"></i><b>11</b> Categorical variables<span></span></a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="categorical-variables.html"><a href="categorical-variables.html#as.factor-command"><i class="fa fa-check"></i><b>11.1</b> as.factor command<span></span></a></li>
+<li class="chapter" data-level="11.2" data-path="categorical-variables.html"><a href="categorical-variables.html#tibble"><i class="fa fa-check"></i><b>11.2</b> tibble<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="code-for-example-data.html"><a href="code-for-example-data.html"><i class="fa fa-check"></i><b>12</b> Code for example data<span></span></a></li>
+<li class="chapter" data-level="13" data-path="creating-r-markdown.html"><a href="creating-r-markdown.html"><i class="fa fa-check"></i><b>13</b> Creating R Markdown<span></span></a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="creating-r-markdown.html"><a href="creating-r-markdown.html#knit-to-final-product"><i class="fa fa-check"></i><b>13.1</b> Knit to final product<span></span></a></li>
+<li class="chapter" data-level="13.2" data-path="creating-r-markdown.html"><a href="creating-r-markdown.html#yaml-header"><i class="fa fa-check"></i><b>13.2</b> YAML header<span></span></a></li>
+<li class="chapter" data-level="13.3" data-path="creating-r-markdown.html"><a href="creating-r-markdown.html#writing-with-r-markdown"><i class="fa fa-check"></i><b>13.3</b> Writing with R Markdown<span></span></a></li>
+<li class="chapter" data-level="13.4" data-path="creating-r-markdown.html"><a href="creating-r-markdown.html#chunks"><i class="fa fa-check"></i><b>13.4</b> “Chunks”<span></span></a></li>
+<li class="chapter" data-level="13.5" data-path="creating-r-markdown.html"><a href="creating-r-markdown.html#first-chunk"><i class="fa fa-check"></i><b>13.5</b> First chunk<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html"><i class="fa fa-check"></i><b>14</b> Analyses with R Markdown<span></span></a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#viewing-the-dataset"><i class="fa fa-check"></i><b>14.1</b> Viewing the dataset<span></span></a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#head-command"><i class="fa fa-check"></i><b>14.1.1</b> head command<span></span></a></li>
+<li class="chapter" data-level="14.1.2" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#kable-beautifies"><i class="fa fa-check"></i><b>14.1.2</b> kable beautifies<span></span></a></li>
+<li class="chapter" data-level="14.1.3" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#tail-command"><i class="fa fa-check"></i><b>14.1.3</b> tail command<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#examining-variables"><i class="fa fa-check"></i><b>14.2</b> Examining variables<span></span></a>
+<ul>
+<li class="chapter" data-level="14.2.1" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#min-max-mean"><i class="fa fa-check"></i><b>14.2.1</b> min, max, mean<span></span></a></li>
+<li class="chapter" data-level="14.2.2" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#summary"><i class="fa fa-check"></i><b>14.2.2</b> summary<span></span></a></li>
+<li class="chapter" data-level="14.2.3" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#summarytools"><i class="fa fa-check"></i><b>14.2.3</b> summarytools<span></span></a></li>
+<li class="chapter" data-level="14.2.4" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#questionrfreq"><i class="fa fa-check"></i><b>14.2.4</b> questionr::freq<span></span></a></li>
+<li class="chapter" data-level="14.2.5" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#table1"><i class="fa fa-check"></i><b>14.2.5</b> table1<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#graphs"><i class="fa fa-check"></i><b>14.3</b> Graphs<span></span></a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#plot"><i class="fa fa-check"></i><b>14.3.1</b> plot<span></span></a></li>
+<li class="chapter" data-level="14.3.2" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#ggplot2"><i class="fa fa-check"></i><b>14.3.2</b> ggplot2<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#linear-regression"><i class="fa fa-check"></i><b>14.4</b> Linear regression<span></span></a>
+<ul>
+<li class="chapter" data-level="14.4.1" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#simple-regression"><i class="fa fa-check"></i><b>14.4.1</b> Simple regression<span></span></a></li>
+<li class="chapter" data-level="14.4.2" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#tidy"><i class="fa fa-check"></i><b>14.4.2</b> tidy<span></span></a></li>
+<li class="chapter" data-level="14.4.3" data-path="analyses-with-r-markdown.html"><a href="analyses-with-r-markdown.html#multiple-regression"><i class="fa fa-check"></i><b>14.4.3</b> Multiple regression<span></span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="afterword.html"><a href="afterword.html"><i class="fa fa-check"></i><b>15</b> Afterword<span></span></a></li>
+<li><a href="appendix.html#appendix">Appendix<span></span></a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R guide</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="creating-r-markdown" class="section level1 hasAnchor" number="13">
+<h1><span class="header-section-number">13</span> Creating R Markdown<a href="creating-r-markdown.html#creating-r-markdown" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Create an <strong>R Markdown file (file extension .Rmd)</strong> by selecting <em>File –&gt; New File –&gt; R Markdown</em> from the RStudio menu (see image below).</p>
+<p><img src="images/newrmarkdown.png" />
+<br></p>
+<p>Next you will see a menu from which you can choose whether you are working on a web page (i.e. an HTML file), a PDF or a Word file. The program will suggest you an HTML-type publication - accept this suggestion by selecting <em>OK</em>.</p>
+<p><img src="images/newrmarkdown2.png" /></p>
+<p><br></p>
+<p>This will create a new .Rmd file with the following sections (see also the image below):</p>
+<ol style="list-style-type: decimal">
+<li>A YAML header at the very beginning of your document: it contains settings such as the final format of the report (HTML vs. PDF vs. Word file)</li>
+<li>Your free text written with markdown (e.g. the text you are reading right was written in such Markdown)</li>
+<li>Special code “chunks”, which can contain code from R and a few other programming languages</li>
+</ol>
+<p><img src="images/rmarkdown_sections.png" />
+<br></p>
+<div id="knit-to-final-product" class="section level2 hasAnchor" number="13.1">
+<h2><span class="header-section-number">13.1</span> Knit to final product<a href="creating-r-markdown.html#knit-to-final-product" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>RStudio created a template R Markdown file for you with some content already. You can instantly convert (or “knit”) the document into its final format. Do the following:</p>
+<ol style="list-style-type: decimal">
+<li>First save your file by selecting <em>File –&gt; Save as…</em> and give the file any name you wish</li>
+<li>Then press the button “Knit” above your code (see image below)</li>
+</ol>
+<p><img src="images/knit.png" />
+<br>
+<br></p>
+<p>At this point, RStudio’s own web browser will open, and you will see the final result of the R Markdown document that you just converted to an HTML format. If everything went ok, you will see the view below:</p>
+<p><img src="images/eka_kaanto.png" /></p>
+<p><br></p>
+</div>
+<div id="yaml-header" class="section level2 hasAnchor" number="13.2">
+<h2><span class="header-section-number">13.2</span> YAML header<a href="creating-r-markdown.html#yaml-header" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The YAML header is isolated from the rest of the document between two lines of the following dashes <code>---</code>. If you are a beginner, you don’t need to modify the YAML section at all. You can start using R Markdown directly with the YAML header that RStudio created for you when you selected <em>File –&gt; New File –&gt; R Markdown</em> from the RStudio menu.</p>
+<p>However, if you are excited to try adjusting YAML as well, you can familiarize yourself e.g. with the online instructions in the book <a href="https://bookdown.org/yihui/rmarkdown/html-document.html">R Markdown: The Definitive Guide.</a></p>
+<p>You can easily add your name and date to your document with the instructions on that page.</p>
+</div>
+<div id="writing-with-r-markdown" class="section level2 hasAnchor" number="13.3">
+<h2><span class="header-section-number">13.3</span> Writing with R Markdown<a href="creating-r-markdown.html#writing-with-r-markdown" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The R Markdown code itself is mostly plain text - just like writing with Word, Notepad, etc. <strong>Bold text</strong> can be made by putting two asterisks around the text: <code>**Bold text**</code>. You can create <em>Italicized text</em> by putting only one asterisk on either side of the text: ```<em>Italicized text</em>’’.</p>
+</div>
+<div id="chunks" class="section level2 hasAnchor" number="13.4">
+<h2><span class="header-section-number">13.4</span> “Chunks”<a href="creating-r-markdown.html#chunks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In chunks, you can run statistical analyses and create tables and graphs with R code. Each chunk must have its own unique title, which you can invent freely; if you use the same title in two different chunks, R will hang the process and warn you of an error when you try to convert the document with the “Knit” button.</p>
+<p>Chunks are separated from free text - that is, from the markdown section - by writing three grave accents both before and after the code. <a href="https://en.wikipedia.org/wiki/Grave_accent">The grave accent</a> is particularly familiar to those who have studied French. If you don’t know how to type a grave accent with the keyboard, you can always copy-paste them from elsewhere, e.g. from this quick guide you’re reading.</p>
+<p>Below is an example of a working chunk:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb23-1"><a href="creating-r-markdown.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r fuel_consumption, echo=FALSE}</span></span>
+<span id="cb23-2"><a href="creating-r-markdown.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="in">plot(car_dataset6$horsepower_eu, car_dataset6$fuel_cons_eu)</span></span>
+<span id="cb23-3"><a href="creating-r-markdown.html#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<p>When <code>echo=FALSE</code> shown above is included, the output of the command <code>plot(car_dataset6$horsepower_eu, car_dataset6$fuel_cons_eu)</code> is seen, but not the code itself <code>plot(car_dataset6$horsepower_eu, car_dataset6$fuel_cons_eu)</code> when our R Markdown document is converted into the final output.</p>
+<p>For more detailed information on how to use the <code>echo</code> option to control what is shown in the final output, you can read <a href="https://rmarkdown.rstudio.com/lesson-3.html">this text.</a></p>
+</div>
+<div id="first-chunk" class="section level2 hasAnchor" number="13.5">
+<h2><span class="header-section-number">13.5</span> First chunk<a href="creating-r-markdown.html#first-chunk" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The first chunk is special: it should be named “r setup”. In this first chunk, you adjust the settings that apply to all subsequent chunks. In addition, here you can download the source file (or sometimes several source files), where in this case the dataset “car_dataset6” that you’ve created can be found.</p>
+<p>Make the following edits to the first chunk:</p>
+<ol style="list-style-type: decimal">
+<li>Call the <em>dplyr</em> package with the library command</li>
+<li>Add <em>my_data.R</em> to the first chunk</li>
+</ol>
+<p>The first chunk should look like this:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb24-1"><a href="creating-r-markdown.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, include=FALSE}</span></span>
+<span id="cb24-2"><a href="creating-r-markdown.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::opts_chunk$set(echo = TRUE)</span></span>
+<span id="cb24-3"><a href="creating-r-markdown.html#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="in">library(dplyr)</span></span>
+<span id="cb24-4"><a href="creating-r-markdown.html#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="in">source(&quot;my_data.R&quot;)</span></span>
+<span id="cb24-5"><a href="creating-r-markdown.html#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<br>
+<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">
+<a property="dct:title" rel="cc:attributionURL" href="https://vldesign.kapsi.fi/r-guide-in-english/">R guide</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="http://www.linkedin.com/in/ville-langen">Ville Langén</a> is licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution-ShareAlike 4.0 International<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1"></a>
+</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="code-for-example-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="analyses-with-r-markdown.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
